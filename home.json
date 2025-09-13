@@ -1,0 +1,34 @@
+{
+  "hero": {
+    "headline": "Invest in India’s next generation of green homes",
+    "subhead": "Curated residential opportunities with data‑driven diligence and clear, investor‑friendly reporting.",
+    "cta_label": "Contact us",
+    "cta_link": "mailto:ankurambastha@gmail.com?subject=Manzil%20enquiry",
+    "hero_image": "/images/hero.jpg"
+  },
+  "why": [
+    {
+      "title": "Curated pipeline",
+      "text": "We handpick sustainable residential projects with strong fundamentals.",
+      "image": "/images/tile1.jpg"
+    },
+    {
+      "title": "Data‑driven diligence",
+      "text": "Architecture + analytics to evaluate risk, cost, and absorption.",
+      "image": "/images/tile2.jpg"
+    },
+    {
+      "title": "Transparent tracking",
+      "text": "Clear updates, clean communication, and aligned structures.",
+      "image": "/images/tile3.jpg"
+    }
+  ],
+  "thesis": [
+    "Green residential focus — long‑term, high‑intent demand.",
+    "North Goa first — expand as data proves out.",
+    "Aligned incentives — protect investors and reward performance."
+  ],
+  "about": "Manzil is a curated investment platform for sustainable residential real estate in India. We combine architectural expertise with data science to surface opportunities that balance design quality, cost control, and market demand. Founded by Ankur Ambastha (B.Arch, IIT Kharagpur), Manzil focuses on disciplined selection, clear reporting, and long‑term value.",
+  "contact_note": "Questions or deal flow? We’d love to hear from you.",
+  "footer": "Information here is for awareness only and not investment advice. Investing involves risk."
+}

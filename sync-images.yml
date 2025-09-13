@@ -1,0 +1,42 @@
+name: Sync Drive Images
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * *'  # daily at 06:00 UTC
+  push:
+    paths:
+      - '.github/workflows/sync-images.yml'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+      - name: Sync images from Drive
+        env:
+          DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          OUTPUT_DIR: public/images
+          MIRROR: 'true'
+        run: |
+          python scripts/drive_sync.py
+      - name: Commit changes (if any)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: sync images from Drive"
+            git push
+          else
+            echo "No changes to commit"
+          fi
