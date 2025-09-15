@@ -1,0 +1,94 @@
+---
+import content from '../content/home.json';
+const { hero, why, thesis, about, contact_note, footer } = content;
+const hasHeroImage = hero && hero.hero_image;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manzil — Sustainable Residential Investments</title>
+    <meta name="description" content="Manzil curates sustainable residential opportunities in India with disciplined evaluation and transparent reporting.">
+    <meta property="og:title" content="Manzil — Sustainable Residential Investments" />
+    <meta property="og:description" content="Curated green-home opportunities with disciplined evaluation and transparent reporting." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og-image.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="section hero">
+      <div class="container stack-24">
+        <div class="eyebrow">Manzil</div>
+        <h1 class="h1">{hero.headline}</h1>
+        <p class="lead">{hero.subhead}</p>
+        <div class="cta-row">
+          <a class="btn-primary" href={hero.cta_link}>{hero.cta_label}</a>
+        </div>
+        {hasHeroImage && (
+          <div class="hero-img">
+            <img src={hero.hero_image} alt="Manzil — hero image" loading="eager" />
+          </div>
+        )}
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container stack-24">
+        <h2 class="h2">Why Manzil</h2>
+        <div class="grid-3">
+          {why.map(({title, text, image}) => (
+            <div class="card">
+              {image && (
+                <div class="tile-img">
+                  <img src={image} alt={title} loading="lazy" />
+                </div>
+              )}
+              <div class="icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M4 14c6-6 12-7 16-7-1 4-2 10-8 12-3 .8-6-.5-8-3z"/>
+                  <path d="M9 15c-.5-2 1-4 3-5"/>
+                </svg>
+              </div>
+              <h3 class="h3">{title}</h3>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container stack-24">
+        <h2 class="h2">Our Thesis</h2>
+        <ul class="list">
+          {thesis.map((t) => <li>{t}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container stack-24">
+        <h2 class="h2">About</h2>
+        <p>{about}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container stack-24">
+        <h2 class="h2">Contact</h2>
+        <p>{contact_note}</p>
+        <a class="btn-primary" href={hero.cta_link}>{hero.cta_label}</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="small">{footer}</p>
+      </div>
+    </footer>
+  </body>
+</html>
